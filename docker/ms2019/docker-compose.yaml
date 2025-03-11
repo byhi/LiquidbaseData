@@ -1,0 +1,6 @@
+
+services:
+  mssql:
+    build: ./Db
+    ports:
+      - 1433:1433

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <!-- SQL fájl beillesztése -->
+    <include file="changes/01-init-schema.sql" relativeToChangelogFile="true"/>
+    <include file="ddl/create_database.sql" relativeToChangelogFile="true"/>
+    <!-- XML changeset -->
+    <changeSet id="002" author="admin">
+        <createTable tableName="users">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="username" type="varchar(255)"/>
+        </createTable>
+    </changeSet>
+
+    <!-- JSON changeset beillesztése -->
+    <include file="changes/03-insert-data.json" relativeToChangelogFile="true"/>
+</databaseChangeLog>
