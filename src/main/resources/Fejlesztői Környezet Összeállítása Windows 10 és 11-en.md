@@ -2,6 +2,24 @@
 
 Ez a dokumentáció segít a fejlesztői környezet beállításában **Windows 10 és 11** alatt. Az útmutató végigvezeti a szükséges eszközök telepítésén, konfigurálásán és használatán, hogy minden fejlesztő hatékonyan tudjon dolgozni.
 
+
+# Tartalomjegyzék
+
+1. **Bevezetés**
+2. **Szükséges szoftverek és eszközök**
+   - 2.1. Windows 10/11 előkészítése  
+   - 2.2. WSL2 és Ubuntu telepítése  
+   - 2.3. Docker és Docker Compose telepítése  
+   - 2.4. SQL Server 2019 konténer előkészítése  
+3. **Liquibase beállítása és használata**
+   - 3.1. Liquibase konténer indítása  
+   - 3.2. Adatbázis inicializálása  
+   - 3.3. Példák változtatások kezelésére (changelog)  
+4. **Fejlesztői környezet konfigurálása**
+   - 4.1. Spring Boot és Liquibase integráció  
+   - 4.2. Tesztelési környezet beállítása  
+5. **Hibaelhárítás és gyakori problémák**
+6. **Összegzés**
 ---
 
 ## **1. Szükséges eszközök és funkcióik**
@@ -175,11 +193,12 @@ Ezzel a Maven hitelesítve lesz a GitHub csomagtárhoz.
 
 
 
-
+# **Liquibase bevezető**
 
 A **Liquibase** egy adatbázis-verziókezelő eszköz, amely lehetővé teszi különböző formátumokban (XML, YAML, JSON, SQL) megírt változtatások (changeset-ek) kezelését. Ha kombinálni szeretnéd az **SQL**, **XML** és **JSON** fájlokat, valamint biztosítani, hogy az adatbázis létrehozása **SQL DDL**-ből történjen, az alábbi megoldások segíthetnek.
 
 ---
+
 
 ### **1. Több formátum kombinálása (SQL + XML + JSON)**
 Liquibase lehetővé teszi, hogy több formátumban írt változtatásokat egy `master` changelog fájlból hívd meg. Példa egy **XML alapú changelogra**, amely SQL és JSON változtatásokat is betölt:
