@@ -275,6 +275,152 @@ Ezzel a Maven hitelesítve lesz a GitHub csomagtárhoz.
 
 
 
+# Git Alapok – Rövid Bemutató
+
+## Mi az a Git?
+
+A Git egy verziókezelő rendszer, amely lehetővé teszi a forráskód változásainak nyomon követését, a csapatmunkát és a kód visszaállítását korábbi állapotokra.
+
+---
+
+## Alapfogalmak
+
+### 1. **Repository (Repo)**
+
+A repository a projekt teljes kódtárolója, amely tartalmazza az összes fájlt, mappát és azok változási történetét.
+
+- **Local repository**: Az adott fejlesztő saját gépén lévő repo.
+- **Remote repository**: Egy központi szerveren (pl. GitHub, GitLab) lévő repo, amelyet a csapat elérhet.
+
+### 2. **Branch (Ág)**
+
+A branch egy független fejlesztési vonal, amely lehetővé teszi, hogy párhuzamosan dolgozzunk másokkal anélkül, hogy azonnal módosítanánk a fő kódot.
+
+- **Main (vagy master) branch**: Az alapértelmezett fő ág.
+- **Feature branch**: Új funkciók fejlesztésére használt ág, amely a main ágból jön létre.
+
+---
+
+## Alapvető Git Parancsok
+
+### 1. **Repo Klónozása**
+
+Ha egy meglévő repót szeretnél a saját gépedre másolni:
+
+```sh
+ git clone <repo_url>
+```
+
+### 2. **Státusz Ellenőrzése**
+
+Megnézheted, hogy milyen változások történtek a repo-ban:
+
+```sh
+ git status
+```
+
+### 3. **Új Fájlok Hozzáadása a Commithoz**
+
+```sh
+ git add <fájlnév>
+```
+
+Vagy az összes változtatás hozzáadása:
+
+```sh
+ git add .
+```
+
+### 4. **Commit Készítése**
+
+A commit egy pillanatkép a kód aktuális állapotáról:
+
+```sh
+ git commit -m "Commit üzenet itt"
+```
+
+### 5. **Változások Feltöltése (Push)**
+
+A commitolt változásokat a távoli repóba küldjük:
+
+```sh
+ git push origin <branch-név>
+```
+
+### 6. **Változások Letöltése (Pull)**
+
+A legújabb változtatások letöltése a távoli repóból:
+
+```sh
+ git pull origin <branch-név>
+```
+
+### 7. **Új Branch Létrehozása**
+
+```sh
+ git branch <új-branch-név>
+```
+
+Majd átváltás az új branch-re:
+
+```sh
+ git checkout <új-branch-név>
+```
+
+Vagy röviden:
+
+```sh
+ git checkout -b <új-branch-név>
+```
+
+### 8. **Branch Mergelése**
+
+Egy branch változásainak összevonása a main branch-be:
+
+```sh
+ git checkout main
+ git merge <branch-név>
+```
+
+### 9. **Merge Konfliktusok Kezelése**
+
+Ha két változás ütközik, manuálisan kell szerkeszteni a fájlt, majd:
+
+```sh
+ git add <fájl>
+ git commit -m "Konfliktus megoldva"
+```
+
+### 10. **Branch Törlése**
+
+Ha egy branch már nem szükséges:
+
+```sh
+ git branch -d <branch-név>
+```
+
+Ha a branch-et a remote repóból is törölni kell:
+
+```sh
+ git push origin --delete <branch-név>
+```
+
+---
+
+## Összegzés
+
+- A **local repo** a saját gépeden van, míg a **remote repo** a központi szerveren.
+- A **branch-ek** segítségével párhuzamosan dolgozhatsz.
+- A **commit** rögzíti a változásokat.
+- A **push** feltölti a változásokat a szerverre, a **pull** pedig letölti azokat.
+- Merge esetén előfordulhatnak konfliktusok, amelyeket manuálisan kell megoldani.
+
+Ez az alap tudás elegendő ahhoz, hogy hatékonyan dolgozzatok Git segítségével! 🚀
+
+Szerkezetre ez tökéletes a gitignorrol még beszélj minimálisan 
+
+
+
 
 # **Liquibase bevezető**
 
