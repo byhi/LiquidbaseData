@@ -37,6 +37,8 @@ Ez a dokumentáció segít a fejlesztői környezet beállításában **Windows 
 
 ## **2. Telepítés és beállítások**
 
+Ebben a részben találod a leírás a környezet kialakításához, arra az esetre, ha nem olyan eszközön dolgoznál, amire előre fel van telepítve a fejlesztéshez szükséges eszközök. 
+
 ### **2.1 Git telepítése és beállítása**
 
 #### **Telepítés**
@@ -110,7 +112,83 @@ Ha a verzió megjelenik, a telepítés sikeres.
 
 ---
 
-### **2.5 Docker telepítése és beállítása**
+https://podman-desktop.io/downloads/windows
+### **2.5.1 Podman telepítése és beállítása**
+
+#### **Telepítés**
+1. Töltsd le a **Podman Desktopot** a [hivatalos oldalról](https://podman-desktop.io/downloads/windows).
+A **Podman** egy nyílt forráskódú, daemon nélküli konténerkezelő eszköz, amely lehetővé teszi konténerek és podok futtatását, kezelését és fejlesztését. Windows 11 rendszeren a **Podman Desktop** alkalmazás telepítésével egyszerűen használhatjuk a Podmant.
+
+**A telepítés lépései Windows 11-re:**
+
+1. **Podman Desktop letöltése:**
+   - Nyisd meg a [Podman Desktop hivatalos weboldalát](https://podman-desktop.io/docs/installation/windows-install).
+   - Kattints a "Download Now" gombra a Windows telepítő letöltéséhez.
+
+2. **Telepítő futtatása:**
+   - Nyisd meg a letöltött `.exe` telepítőfájlt.
+   - Kövesd a telepítő utasításait a Podman Desktop telepítéséhez.
+
+3. **Rendszerkövetelmények ellenőrzése:**
+   - Győződj meg arról, hogy a rendszered megfelel az alábbi követelményeknek:
+     - Windows 10 vagy Windows 11.
+     - Legalább 6 GB RAM.
+     - A Windows Subsystem for Linux (WSL) telepítve van. Ha nincs, a Podman Desktop segít annak telepítésében.
+
+4. **WSL és virtuális gép beállítása:**
+   - A Podman a WSL-t használja a Linux-alapú konténerek futtatásához.
+   - Ha a WSL nincs telepítve, nyiss meg egy parancssort rendszergazdaként, és futtasd a következő parancsot:
+     ```
+     wsl --install --no-distribution
+     ```
+     Ez telepíti a WSL-t anélkül, hogy egy konkrét Linux disztribúciót is telepítene.
+   - Indítsd újra a számítógépet a változtatások érvénybe lépéséhez.
+
+5. **Podman telepítése és indítása:**
+   - A Podman Desktop első indításakor ellenőrzi a szükséges komponensek meglétét.
+   - Ha a Podman nincs telepítve, a Podman Desktop felajánlja annak telepítését.
+   - Kattints az "Install" gombra, és kövesd az utasításokat.
+   - A telepítés után kattints az "Initialize and start" gombra a Podman gép inicializálásához és indításához.
+
+**Alternatív telepítési módszerek:**
+
+- **Chocolatey csomagkezelő használata:**
+  - Nyiss meg egy parancssort rendszergazdaként.
+  - Futtasd a következő parancsot a Podman Desktop telepítéséhez:
+    ```
+    choco install podman-desktop
+    ```
+
+- **Scoop csomagkezelő használata:**
+  - Nyiss meg egy parancssort.
+  - Add hozzá az "extras" tárolót:
+    ```
+    scoop bucket add extras
+    ```
+  - Telepítsd a Podman Desktopot:
+    ```
+    scoop install podman-desktop
+    ```
+
+- **Winget csomagkezelő használata:**
+  - Nyiss meg egy parancssort.
+  - Futtasd a következő parancsot a Podman Desktop telepítéséhez:
+    ```
+    winget install -e --id RedHat.Podman-Desktop
+    ```
+
+**Megjegyzés:**
+A Podman Desktop telepítése során a rendszer automatikusan beállítja a szükséges környezeti változókat, így a `podman` parancs elérhető lesz a parancssorból vagy a PowerShellből. Ha egyéb terminálokat (pl. Git Bash) használsz, előfordulhat, hogy manuálisan kell hozzáadnod a Podman telepítési útvonalát a PATH környezeti változóhoz.
+
+**További információk:**
+- [Podman Desktop telepítése Windowsra](https://podman-desktop.io/docs/installation/windows-install)
+- [Podman használata Windows rendszeren](https://www.redhat.com/en/blog/run-podman-windows)
+
+Ezekkel a lépésekkel sikeresen telepítheted és használhatod a Podmant Windows 11 rendszeren. 
+
+---
+
+### **2.5.2 Docker telepítése és beállítása**
 
 #### **Telepítés**
 1. Töltsd le a **Docker Desktopot** a [hivatalos oldalról](https://www.docker.com/products/docker-desktop/).
@@ -130,6 +208,11 @@ Ha a konténer fut, a telepítés sikeres.
 - `docker-compose up -d` – Több konténer indítása háttérben.
 
 ---
+
+#### **Alap parancsok**
+- `docker ps` – Futtatott konténerek listázása.
+- `docker images` – Letöltött képfájlok listázása.
+- `docker-compose up -d` – Több konténer indítása háttérben.
 
 ### **2.6 Liquibase telepítése és beállítása**
 
@@ -163,7 +246,7 @@ Ha a verzió megjelenik, a telepítés sikeres.
 
 ---
 
-### **3.2 Maven token beállítása**
+### **3.2 Maven, git token beállítása**
 
 1. Nyisd meg a következő fájlt:
     - Windows: `%USERPROFILE%\.m2\settings.xml`
@@ -173,7 +256,7 @@ Ha a verzió megjelenik, a telepítés sikeres.
 <settings>
   <servers>
     <server>
-      <id>github</id>
+      <id>REPO_ID</id>
       <username>GITHUB_USERNAME</username>
       <password>TOKEN</password>
     </server>
